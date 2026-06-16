@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "KollywoodMemes",
+  "version": "1.0.4",
+  "description": "Type meme phrases in Reddit comments to instantly insert meme images.",
+  "permissions": ["storage", "activeTab", "clipboardWrite", "clipboardRead"],
+  "host_permissions": ["https://*.reddit.com/*"],
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.reddit.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "options_page": "options.html",
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/memes/*"],
+      "matches": ["https://*.reddit.com/*"]
+    }
+  ]
+}
