@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KollywoodMemes</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  width: 320px;
+  background: #000033;
+  color: #e8e8e8;
+}
+.hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid #05056b;
+}
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.app-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffaa00;
+  letter-spacing: .3px;
+}
+.badge {
+  font-size: 11px;
+  background: #05056b;
+  color: #7fa8ff;
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #05056b;
+}
+.toggle-label { font-size: 12px; color: #ccc; }
+.sw {
+  position: relative;
+  width: 36px;
+  height: 20px;
+}
+.sw input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #05056b;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: background .2s;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform .2s;
+}
+.sw input:checked + .slider { background: #ffaa00; }
+.sw input:checked + .slider::before { transform: translateX(16px); }
+.credit {
+  padding: 18px 16px;
+  text-align: center;
+  border-bottom: 1px solid #05056b;
+}
+.credit-line {
+  font-size: 11px;
+  color: #6677aa;
+  margin-bottom: 8px;
+}
+.credit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7fa8ff;
+  text-decoration: none;
+  letter-spacing: .3px;
+}
+.credit-link:hover { color: #fff; }
+.credit-link:hover svg { fill: #fff; }
+.credit-link svg {
+  fill: #7fa8ff;
+  transition: fill .15s;
+  flex-shrink: 0;
+}
+.ft {
+  padding: 10px 16px;
+  display: flex;
+  gap: 8px;
+}
+.btn {
+  flex: 1;
+  font-size: 11px;
+  padding: 7px 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity .15s;
+}
+.btn:hover { opacity: .85; }
+.btn-p { background: #ffaa00; color: #5c0a0a; }
+.btn-s { background: #05056b; color: #7fa8ff; }
+</style>
+</head>
+<body>
+<div class="hd">
+  <div class="title-row">
+    <img class="app-icon" src="icon-popup.png" alt="">
+    <span class="title">KollywoodMemes</span>
+  </div>
+  <span class="badge" id="count">Meme's Available : 0</span>
+</div>
+<div class="toggle-row">
+  <span class="toggle-label">Active on Reddit</span>
+  <label class="sw">
+    <input type="checkbox" id="tog">
+    <span class="slider"></span>
+  </label>
+</div>
+<div class="credit">
+  <div class="credit-line">Built for r/kollywood by</div>
+  <a class="credit-link" href="https://github.com/TheLastAutumnLeaf" target="_blank">
+    <svg width="15" height="15" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+        -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+        .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+        -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+        .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+        .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+        0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+    TheLastAutumnLeaf
+  </a>
+</div>
+<div class="ft">
+  <button class="btn btn-p" id="opts">Manage Memes</button>
+  <button class="btn btn-s" id="reload">Refresh</button>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
